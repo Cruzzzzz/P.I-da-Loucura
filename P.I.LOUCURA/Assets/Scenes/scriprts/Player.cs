@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -20,18 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Bullet bulletprefab;
     public GameManangerScript gameMananger;
     private bool isDead;
-
-
-
-    
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         lifeMax = life;
-
-
-
     }
    void Update()
     {
