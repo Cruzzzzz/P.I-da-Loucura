@@ -1,5 +1,6 @@
  using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class Player : MonoBehaviour
 
     public int direction = 1;
     public int score;
-    public Text texto;
-    public string text;
+    public TMP_Text texto;
+    public string TMP_Text;
     [SerializeField] private Bullet bulletprefab;
     public GameManangerScript gameMananger;
     private bool isDead;
