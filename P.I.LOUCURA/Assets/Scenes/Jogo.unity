@@ -36516,6 +36516,7 @@ MonoBehaviour:
   TMP_Text: 
   bulletprefab: {fileID: 2897700699865230169, guid: 68fa2c4a5f16535439ad310383953dd1, type: 3}
   gameMananger: {fileID: 541331102}
+  fireRate: 0.2
 --- !u!61 &1837139787
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Bullet bulletprefab;
     public GameManangerScript gameMananger;
     private bool isDead;
+
+    float timerShoot;
+    public float fireRate;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +43,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject temp = Instantiate(bullet, transform.position, transform.rotation);
-            temp.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * direction, 0);
+            if (timerShoot > fireRate)
+            {
+                GameObject temp = Instantiate(bullet, transform.position, transform.rotation);
+                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * direction, 0);
+                timerShoot = 0;
+            }
+        }else
+        {
+            timerShoot += Time.deltaTime;
         }
         UpdateScoreText();
 
