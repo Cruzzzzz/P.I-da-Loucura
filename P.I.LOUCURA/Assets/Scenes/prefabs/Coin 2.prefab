@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4690786944636680430}
   - component: {fileID: -8486458697218021620}
   - component: {fileID: 698326870481625832}
+  - component: {fileID: 2062795556968891366}
   m_Layer: 0
   m_Name: Coin 2
   m_TagString: Aumenta
@@ -133,3 +134,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2062795556968891366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8461177875287148084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2472ec314deb84383c388ceeb6320b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectSound: {fileID: 8300000, guid: e897957095381514694d37e52498032c, type: 3}
+  itemPrefab: {fileID: 0}
