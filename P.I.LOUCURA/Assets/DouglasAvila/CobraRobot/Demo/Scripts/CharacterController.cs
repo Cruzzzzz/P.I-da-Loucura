@@ -110,8 +110,8 @@ namespace DouglasAvila.CobraRobot.Scripts
         
         private void HandleAnimationsParameters()
         {
-            _animator.SetFloat("velocityX", _rigidbody.velocity.x);
-            _animator.SetFloat("velocityY", _rigidbody.velocity.y);
+            _animator.SetFloat("velocityX", _rigidbody.linearVelocity.x);
+            _animator.SetFloat("velocityY", _rigidbody.linearVelocity.y);
             _animator.SetBool("isHorizontalMoving", _isHorizontalMoving);
             _animator.SetBool("isGrounded", _isGrounded);
             _animator.SetInteger("meleeAttackComboCount", _meleeAttackComboCount);
@@ -169,7 +169,7 @@ namespace DouglasAvila.CobraRobot.Scripts
                     -maxHorizontalSpeed, 
                     maxHorizontalSpeed
                 );
-            _rigidbody.velocity = new Vector2(_xVelocity, _rigidbody.velocity.y);
+            _rigidbody.linearVelocity = new Vector2(_xVelocity, _rigidbody.linearVelocity.y);
             _spriteRenderer.flipX = _xVelocity < 0;
             _isHorizontalMoving = true;
         }
@@ -180,8 +180,8 @@ namespace DouglasAvila.CobraRobot.Scripts
             // If we have horizontal movement input, it means the player is pressing to move so we do nothing here
             if (_inputHorizontalMovementDirection != 0) return;
          
-            _xVelocity = Mathf.Lerp(0.0f, _rigidbody.velocity.x, Mathf.Pow(2, deceleration * Time.deltaTime));
-            _rigidbody.velocity = new Vector2(_xVelocity, _rigidbody.velocity.y);
+            _xVelocity = Mathf.Lerp(0.0f, _rigidbody.linearVelocity.x, Mathf.Pow(2, deceleration * Time.deltaTime));
+            _rigidbody.linearVelocity = new Vector2(_xVelocity, _rigidbody.linearVelocity.y);
             _isHorizontalMoving = false;
         }
 
@@ -197,7 +197,7 @@ namespace DouglasAvila.CobraRobot.Scripts
             _groundCollider.Disable(0.2f);
             _disableMovementTimer = 0;
             _jump = true;
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpForce);
+            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, jumpForce);
         }
 
         /**
@@ -217,7 +217,7 @@ namespace DouglasAvila.CobraRobot.Scripts
             if (_isGrounded)
             {
                 _disableMovementTimer = rangedAttackRecoveringTimer;
-                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                _rigidbody.linearVelocity = new Vector2(0, _rigidbody.linearVelocity.y);
             }
             
             InterruptMeleeAttacking();
@@ -267,7 +267,7 @@ namespace DouglasAvila.CobraRobot.Scripts
             if (_isGrounded)
             {
                 _disableMovementTimer = meleeAttackRecoveringTimer;
-                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                _rigidbody.linearVelocity = new Vector2(0, _rigidbody.linearVelocity.y);
             }
             _isHorizontalMoving = false;
             _meleeAttack = true;
@@ -311,7 +311,7 @@ namespace DouglasAvila.CobraRobot.Scripts
         {
             if (!_inputSimulateDamage) return;
             
-            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+            _rigidbody.linearVelocity = new Vector2(0, _rigidbody.linearVelocity.y);
             _disableMovementTimer = damageRecoveringTimer;
 
             _simulateDamage = true;
@@ -325,7 +325,7 @@ namespace DouglasAvila.CobraRobot.Scripts
         {
             if (!_inputSimulateDefeat) return;
             
-            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+            _rigidbody.linearVelocity = new Vector2(0, _rigidbody.linearVelocity.y);
             _disableMovementTimer = defeatRecoveringTimer;
 
             _simulateDefeat = true;

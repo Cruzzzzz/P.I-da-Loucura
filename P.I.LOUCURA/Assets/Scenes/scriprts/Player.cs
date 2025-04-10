@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             if (timerShoot > fireRate)
             {
                 GameObject temp = Instantiate(bullet, transform.position, transform.rotation);
-                temp.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * direction, 0);
+                temp.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(bulletSpeed * direction, 0);
                 timerShoot = 0;
             }
         }else
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        body.velocity = new Vector2(horizontal * speed, body.velocity.y);
+        body.linearVelocity = new Vector2(horizontal * speed, body.linearVelocity.y);
 
         if (Mathf.Abs(horizontal) > 0)
         {
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         groundCheck = Physics2D.OverlapCircle(foot.position, 0.05f);
 
 
-        /*Para quem está usando GetAxis
+        /*Para quem estï¿½ usando GetAxis
         if(horizontal < 0)
         {
             direction = -1;
